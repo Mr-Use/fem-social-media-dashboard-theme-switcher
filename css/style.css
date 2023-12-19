@@ -1,0 +1,285 @@
+/* custom properties */
+:root {
+    --clr-limegreen: hsl(163, 72%, 41%);
+    --clr-brightred: hsl(356, 69%, 56%);
+
+    --accent-1: hsl(208, 92%, 53%);
+    --accent-2: hsl(203, 89%, 53%);
+    --accent-3: hsl(348, 97%, 39%);
+
+    --img-gradient-1: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+
+    --toggle: hsl(230, 22%, 74%);
+
+    --bg-color: hsl(0, 0%, 100%);
+    --bg-pattern: hsl(225, 100%, 98%);
+    --bg-card: hsl(227, 47%, 96%);
+    --text-clr-1: hsl(228, 12%, 44%);
+    --text-clr-2: hsl(230, 17%, 14%);
+    
+
+    --ff-default: 'Inter', sans-serif;
+}
+
+body:has(input[type='checkbox']:checked),
+.dark-theme {
+    --bg-color: hsl(230, 17%, 14%);
+    --bg-pattern: hsl(232, 19%, 15%);
+    --bg-card: hsl(228, 28%, 20%);
+    --text-clr-1: hsl(228, 34%, 66%);
+    --text-clr-2: hsl(0, 0%, 100%);
+
+    --toggle: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+}
+
+/* resets */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    font: inherit;
+}
+
+img {
+    /* display: block; */
+    max-width: 100%;
+}
+
+/* utilities */
+.content {
+    width: min(1142px, 87%);
+    margin-inline: auto;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding-block: 25px;
+}
+
+.spaced {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.up {
+    color: var(--clr-limegreen)
+}
+
+.down {
+    color: var(--clr-brightred)
+}
+
+.arrow {
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/* customs */
+body {
+    font-family: var(--ff-default);
+    font-size: 14px;
+    background-color: var(--bg-color);
+}
+
+.project-wrapper {
+    color: var(--text-clr-1);
+    font-weight: 700;
+    padding-block: clamp(30px, 40px, 4vw);
+}
+
+/* dashboard header */
+h1 {
+    font-size: 1.7em;
+    font-weight: 700;
+    color: var(--text-clr-2);
+}
+
+p.total-followers {
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#toggle-button {
+    display: none;
+}
+
+.toggle-button {
+    width: 50px;
+    background: var(--toggle);
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.toggle-circle {
+    background-color: var(--bg-card);
+    height: 20px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    transition: 250ms;
+}
+
+#toggle-button:checked + .toggle-button > .toggle-circle {
+    transform: translateX(calc(100% + 4px));
+}
+
+@media (max-width: 619px) {
+    .dashboard-header > .content-group {
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--text-clr-1);
+    }
+
+    .theme-switcher {
+        margin-top: 15px;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 620px) {
+    .dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: min(2.1em, 2.33vw);
+    }
+}
+
+/* followers cards */
+section.followers-cards {
+    padding-block: clamp(30px, 43px, 3vw);
+    display: grid;
+    gap: 25px;
+}
+
+.followers-cards > .card {
+    --_border-clr: var(--border-clr, --bg-card);
+    text-align: center;
+    position: relative;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.followers-cards > .card:before {
+    content: '';
+    background: var(--_border-clr);
+    width: 100%;
+    height: calc(100% + 4px);
+    position: absolute;
+    bottom: 0; left: 0;
+    border-radius: 4px;
+    z-index: -1;
+}
+
+span.username {
+    font-size: .9em;
+    margin-left: 4px;
+    margin-bottom: 15px;
+    vertical-align: super;
+}
+
+.followers-count {
+    margin-block: 15px 20px;
+    font-size: 4em;
+}
+
+p.follower-count {
+    color: var(--text-clr-2);
+}
+
+p.follower-count + p {
+    font-size: .25em;
+}
+
+@media (min-width: 620px) {
+    .followers-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .followers-cards {
+        grid-template-columns: repeat(4, 1fr) ;
+    }
+
+    .followers-count {
+        font-size: min(56px, 4vw);
+    }
+}
+
+/* overview today */
+h2 {
+    font-size: 1.8em;
+    margin-bottom: clamp(20px, 28px, 2vw);
+}
+
+section.overview-today > .cards {
+    display: grid;
+    gap: 20px;
+}
+
+.today-card {
+    padding-inline: 25px;
+    border-radius: 4px;
+}
+
+.today-card > * {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.today-card > .today-count {
+    align-items: end;
+}
+
+.count {
+    font-size: 2.3em;
+    color: var(--text-clr-2)
+}
+
+@media (min-width: 620px) {
+    section.overview-today > .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    section.overview-today > .cards {
+        grid-template-columns: repeat(4, 1fr) ;
+    }
+}
+
+
+
+/* private properties */
+.fb-card {
+    --border-clr: var(--accent-1)
+}
+
+.tt-card {
+    --border-clr: var(--accent-2)
+}
+
+.ig-card {
+    --border-clr: var(--img-gradient-1)
+}
+
+.yt-card {
+    --border-clr: var(--accent-3)
+}
