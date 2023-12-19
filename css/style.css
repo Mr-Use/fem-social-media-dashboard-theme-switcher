@@ -87,6 +87,11 @@ body {
     color: var(--text-clr-1);
     font-weight: 700;
     padding-block: clamp(30px, 40px, 4vw);
+
+    min-height: 100dvh;
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr;
 }
 
 /* dashboard header */
@@ -264,8 +269,6 @@ section.overview-today > .cards {
         grid-template-columns: repeat(4, 1fr) ;
     }
 }
-
-
 
 /* private properties */
 .fb-card {
