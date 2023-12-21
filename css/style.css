@@ -21,7 +21,6 @@
     --ff-default: 'Inter', sans-serif;
 }
 
-body:has(input[type='checkbox']:checked),
 .dark-theme {
     --bg-color: hsl(230, 17%, 14%);
     --bg-pattern: hsl(232, 19%, 15%);
